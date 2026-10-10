@@ -1,8 +1,144 @@
-[gd_scene format=3 uid="uid://hqjgn1veb61e"]
+[gd_scene format=3 uid="uid://bo1gqnlnu7mkg"]
 
-[ext_resource type="Texture2D" uid="uid://ce5l00hhda6t1" path="res://icon.svg" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://bnmatkf00wyka" path="res://Sprites/grass.png" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://b4jwgsd5elgve" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cnpfxrsgsseam" path="res://Scenes/cloud.tscn" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://bjsaxswxr43rr" path="res://Scripts/camera.gd" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://b0qheufds5khj" path="res://Scripts/cloud_spawner.gd" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://37s8pb7eq05c" path="res://Scripts/score.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://dbuyo8cf5dc8f" path="res://Scripts/GameOver.gd" id="7_6bp64"]
 
-[node name="Main" type="Node2D" unique_id=1644857002]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378885712]
-texture = ExtResource("1_jjgbg")
+[sub_resource type="Gradient" id="Gradient_8gbba"]
+offsets = PackedFloat32Array(0.649351, 1)
+colors = PackedColorArray(0.560784, 0.937255, 1, 1, 0.85098, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jjvhh"]
+gradient = SubResource("Gradient_8gbba")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
+size = Vector2(23, 797)
+
+[node name="Main" type="Node2D" unique_id=1813136685]
+
+[node name="FloorCollider" type="StaticBody2D" parent="." unique_id=597048664]
+position = Vector2(0, 325)
+scale = Vector2(6.68, 1.01695)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollider" unique_id=618362594]
+position = Vector2(-0.449102, 75)
+scale = Vector2(5.21557, 1)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorCollider" unique_id=716476224]
+position = Vector2(0, 121)
+scale = Vector2(0.0538921, 0.240001)
+texture = ExtResource("1_8gbba")
+
+[node name="Player" parent="." unique_id=1099365276 instance=ExtResource("1_jjgbg")]
+position = Vector2(1, 358)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=504747911 node_paths=PackedStringArray("player")]
+script = ExtResource("3_kry3j")
+player = NodePath("../Player")
+
+[node name="Background" type="Sprite2D" parent="Camera2D" unique_id=1199971251]
+z_index = -2
+rotation = 1.5708
+scale = Vector2(3.2, 1289.74)
+texture = SubResource("GradientTexture1D_jjvhh")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1991385927]
+position = Vector2(-350, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=2101777257]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_jjgbg")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1328945365]
+position = Vector2(350, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1223040356]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_jjgbg")
+
+[node name="CloudSpawner" type="Node2D" parent="." unique_id=1434711428 node_paths=PackedStringArray("cloud", "player", "camera")]
+script = ExtResource("4_jjvhh")
+cloud = NodePath("../Cloud")
+player = NodePath("../Player")
+camera = NodePath("../Camera2D")
+
+[node name="Cloud" parent="." unique_id=1758967551 instance=ExtResource("3_jjvhh")]
+position = Vector2(-95, 605)
+
+[node name="ScoreCanvas" type="CanvasLayer" parent="." unique_id=829886015]
+
+[node name="Control" type="Control" parent="ScoreCanvas" unique_id=1027606480]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="ScoreCanvas/Control" unique_id=626080195]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score"
+script = ExtResource("6_21xkr")
+
+[node name="GameOver" type="Node2D" parent="." unique_id=476651057]
+script = ExtResource("7_6bp64")
+
+[node name="GameOverCanvas" type="CanvasLayer" parent="." unique_id=812739836]
+visible = false
+
+[node name="Control" type="Control" parent="GameOverCanvas" unique_id=2008080998]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GameOverCanvas/Control" unique_id=94578348]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+
+[node name="GameOver" type="Label" parent="GameOverCanvas/Control" unique_id=261343431]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 157.0
+offset_right = 397.0
+offset_bottom = 199.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="GameOverCanvas/Control" unique_id=1088901671]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.575
+offset_left = 259.0
+offset_top = 570.0
+offset_right = 299.0
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 1
+script = ExtResource("6_21xkr")
+
+[node name="Button" type="Button" parent="GameOverCanvas" unique_id=1050680168]
+offset_left = 248.0
+offset_top = 320.0
+offset_right = 378.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 20
+text = "Play Again?"
+
+[connection signal="pressed" from="GameOverCanvas/Button" to="GameOver" method="_on_button_pressed"]
