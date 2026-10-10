@@ -8,11 +8,24 @@
 [ext_resource type="Script" uid="uid://b0qheufds5khj" path="res://Scripts/cloud_spawner.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://37s8pb7eq05c" path="res://Scripts/score.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://dbuyo8cf5dc8f" path="res://Scripts/GameOver.gd" id="7_6bp64"]
+[ext_resource type="FontFile" uid="uid://dwy2m7qtbe8bk" path="res://Fonts/MADE Tommy Soft Regular PERSONAL USE.otf" id="7_ynf5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(23, 797)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5ysw"]
+bg_color = Color(0.8666667, 1, 0.84705883, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.015686275, 0.21960784, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Main" type="Node2D" unique_id=1813136685]
 
@@ -74,21 +87,52 @@ move_speed = 15.0
 
 [node name="Control" type="Control" parent="ScoreCanvas" unique_id=1027606480]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 40.0
+grow_horizontal = 2
 
-[node name="Score" type="Label" parent="ScoreCanvas/Control" unique_id=626080195]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "hellooooo"
+[node name="Panel" type="Panel" parent="ScoreCanvas/Control" unique_id=1844951873]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_top = 10.0
+offset_right = 121.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5ysw")
+
+[node name="Score" type="Label" parent="ScoreCanvas/Control/Panel" unique_id=626080195]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -25.0
+offset_right = 61.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 25)
+theme_override_colors/font_color = Color(0.01604467, 0.2186791, 6.545782e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ynf5e")
+theme_override_font_sizes/font_size = 40
+text = "Score:"
 script = ExtResource("6_21xkr")
 
-[node name="GameOver" type="Node2D" parent="." unique_id=476651057]
+[node name="GameOver" type="Node2D" parent="." unique_id=476651057 node_paths=PackedStringArray("game_over_canvas", "score", "reset_button")]
 script = ExtResource("7_6bp64")
+game_over_canvas = NodePath("../GameOverCanvas")
+score = NodePath("../ScoreCanvas/Control/Panel/Score")
+reset_button = NodePath("../GameOverCanvas/Button")
 
 [node name="GameOverCanvas" type="CanvasLayer" parent="." unique_id=812739836]
 visible = false
@@ -108,9 +152,9 @@ color = Color(1, 1, 1, 0)
 [node name="GameOver" type="Label" parent="GameOverCanvas/Control" unique_id=261343431]
 layout_mode = 0
 offset_left = 225.0
-offset_top = 157.0
+offset_top = 235.0
 offset_right = 397.0
-offset_bottom = 199.0
+offset_bottom = 277.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "GAME OVER"
@@ -122,9 +166,9 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.575
 offset_left = 259.0
-offset_top = 570.0
+offset_top = 420.0
 offset_right = 299.0
-offset_bottom = 589.0
+offset_bottom = 439.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score"
@@ -132,11 +176,15 @@ horizontal_alignment = 1
 script = ExtResource("6_21xkr")
 
 [node name="Button" type="Button" parent="GameOverCanvas" unique_id=1050680168]
-offset_left = 248.0
-offset_top = 320.0
-offset_right = 378.0
-offset_bottom = 370.0
+offset_left = 201.0
+offset_top = 308.0
+offset_right = 401.0
+offset_bottom = 408.0
+pivot_offset = Vector2(60, 19)
 theme_override_font_sizes/font_size = 20
 text = "Play Again?"
+
+[node name="StartCanvas" type="CanvasLayer" parent="." unique_id=842216841]
+visible = false
 
 [connection signal="pressed" from="GameOverCanvas/Button" to="GameOver" method="_on_button_pressed"]
