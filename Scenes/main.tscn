@@ -9,7 +9,11 @@
 [ext_resource type="Script" uid="uid://37s8pb7eq05c" path="res://Scripts/score.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://dbuyo8cf5dc8f" path="res://Scripts/GameOver.gd" id="7_6bp64"]
 [ext_resource type="StyleBox" uid="uid://bxpka6qmw622v" path="res://Themes/green_rectangle.tres" id="7_6iyac"]
+[ext_resource type="Script" uid="uid://c2q51kdjhahuk" path="res://Scripts/start_canvas.gd" id="7_h1bgf"]
+[ext_resource type="Script" uid="uid://cq01117nhcsfo" path="res://Scripts/score_canvas.gd" id="7_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://d4dmd20xgkd84" path="res://Sprites/logo.png" id="7_wsu2k"]
 [ext_resource type="FontFile" uid="uid://dwy2m7qtbe8bk" path="res://Fonts/MADE Tommy Soft Regular PERSONAL USE.otf" id="7_ynf5e"]
+[ext_resource type="StyleBox" uid="uid://cxyir3kuo8rkw" path="res://Themes/green_button.tres" id="9_k12tt"]
 [ext_resource type="FontFile" uid="uid://dptppiy285gbn" path="res://Fonts/MADE Tommy Soft ExtraBold PERSONAL USE.otf" id="10_d1ilt"]
 [ext_resource type="FontFile" uid="uid://62ejyl8ffok7" path="res://Fonts/MADE Tommy Soft Medium PERSONAL USE.otf" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://ce5l00hhda6t1" path="res://icon.svg" id="13_fdnlq"]
@@ -18,18 +22,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(23, 797)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hptm8"]
-bg_color = Color(0.8666667, 1, 0.84705883, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.015686275, 0.21960784, 0, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [node name="Main" type="Node2D" unique_id=1813136685]
 
@@ -88,20 +80,60 @@ camera = NodePath("../Camera2D")
 position = Vector2(-95, 605)
 move_speed = 15.0
 
-[node name="ScoreCanvas" type="CanvasLayer" parent="." unique_id=829886015]
+[node name="StartCanvas" type="CanvasLayer" parent="." unique_id=842216841]
+script = ExtResource("7_h1bgf")
 
-[node name="Control" type="Control" parent="ScoreCanvas" unique_id=1027606480]
-layout_mode = 3
-anchors_preset = 5
+[node name="Logo" type="TextureRect" parent="StartCanvas" unique_id=1974778315]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_wsu2k")
 
-[node name="Panel" type="Panel" parent="ScoreCanvas/Control" unique_id=1844951873]
-layout_mode = 1
+[node name="StartPanel" type="Panel" parent="StartCanvas" unique_id=1915162019]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = 179.0
+offset_right = 76.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("9_k12tt")
+
+[node name="StartButton" type="Button" parent="StartCanvas" unique_id=992837157]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.25
+offset_top = 175.0
+offset_right = 85.25
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
+theme_override_fonts/font = ExtResource("10_hptm8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("9_k12tt")
+text = "Start"
+flat = true
+
+[node name="ScoreCanvas" type="CanvasLayer" parent="." unique_id=829886015]
+script = ExtResource("7_jkdf5")
+
+[node name="Panel" type="Panel" parent="ScoreCanvas" unique_id=1844951873]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -112,7 +144,7 @@ offset_bottom = 73.0
 grow_horizontal = 2
 theme_override_styles/panel = ExtResource("7_6iyac")
 
-[node name="Score" type="Label" parent="ScoreCanvas/Control/Panel" unique_id=626080195]
+[node name="Score" type="Label" parent="ScoreCanvas/Panel" unique_id=626080195]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -170,7 +202,7 @@ text = "made for KnightHacks 2026"
 visible = false
 script = ExtResource("7_6bp64")
 game_over_canvas = NodePath("GameOverCanvas")
-score = NodePath("../ScoreCanvas/Control/Panel/Score")
+score = NodePath("../ScoreCanvas/Panel/Score")
 reset_button = NodePath("GameOverCanvas/Panel/Button")
 
 [node name="GameOverCanvas" type="CanvasLayer" parent="GameOver" unique_id=812739836]
@@ -246,8 +278,9 @@ pivot_offset = Vector2(60, 19)
 theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
 theme_override_fonts/font = ExtResource("10_hptm8")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_hptm8")
+theme_override_styles/normal = ExtResource("9_k12tt")
 text = "Play Again?"
+flat = true
 
 [node name="SadLenny" type="TextureRect" parent="GameOver/GameOverCanvas/Panel" unique_id=1283763470]
 layout_mode = 1
@@ -261,7 +294,5 @@ offset_bottom = 64.0
 grow_vertical = 2
 texture = ExtResource("13_fdnlq")
 
-[node name="StartCanvas" type="CanvasLayer" parent="." unique_id=842216841]
-visible = false
-
+[connection signal="pressed" from="StartCanvas/StartButton" to="StartCanvas" method="_on_start_button_pressed"]
 [connection signal="pressed" from="GameOver/GameOverCanvas/Panel/Button" to="GameOver" method="_on_button_pressed"]
