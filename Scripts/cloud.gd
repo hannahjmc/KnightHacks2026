@@ -19,6 +19,6 @@ func _physics_process(delta: float) -> void:
 	
 func body_shape_entered():
 		gravity_scale = 0.000001
-#saegstrjhrhbsdtjty
+#aaaaaaaaaaaaaaaaaa
 func body_exited():
 		set_axis_velocity(Vector2(linear_velocity.x,10))
