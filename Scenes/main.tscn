@@ -30,8 +30,9 @@ corner_radius_bottom_left = 20
 [node name="Main" type="Node2D" unique_id=1813136685]
 
 [node name="FloorCollider" type="StaticBody2D" parent="." unique_id=597048664]
-position = Vector2(0, 325)
+position = Vector2(0, 261)
 scale = Vector2(6.68, 1.01695)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollider" unique_id=618362594]
 position = Vector2(-0.449102, 75)
@@ -44,7 +45,7 @@ scale = Vector2(0.0538921, 0.240001)
 texture = ExtResource("1_8gbba")
 
 [node name="Player" parent="." unique_id=1099365276 node_paths=PackedStringArray("camera", "game_over_canvas") instance=ExtResource("1_jjgbg")]
-position = Vector2(1, 358)
+position = Vector2(1, 294)
 speed = 300.0
 camera = NodePath("../Camera2D")
 game_over_canvas = NodePath("../GameOverCanvas")
@@ -127,6 +128,39 @@ theme_override_fonts/font = ExtResource("7_ynf5e")
 theme_override_font_sizes/font_size = 40
 text = "Score:"
 script = ExtResource("6_21xkr")
+
+[node name="BottomPanel" type="Panel" parent="ScoreCanvas" unique_id=1053061567]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -45.0
+offset_right = 329.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5ysw")
+
+[node name="Credits" type="Label" parent="ScoreCanvas/BottomPanel" unique_id=117842226]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -12.0
+offset_right = 128.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 25)
+theme_override_colors/font_color = Color(0.01604467, 0.2186791, 6.545782e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ynf5e")
+theme_override_font_sizes/font_size = 20
+text = "made for KnightHacks 2026"
 
 [node name="GameOver" type="Node2D" parent="." unique_id=476651057 node_paths=PackedStringArray("game_over_canvas", "score", "reset_button")]
 script = ExtResource("7_6bp64")
