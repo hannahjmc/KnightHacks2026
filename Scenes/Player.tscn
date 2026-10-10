@@ -1,0 +1,838 @@
+[gd_scene format=3 uid="uid://b4jwgsd5elgve"]
+
+[ext_resource type="Script" uid="uid://badikd83xv3ns" path="res://Scripts/player.gd" id="1_2i876"]
+[ext_resource type="Texture2D" uid="uid://bich4admqn1n8" path="res://Sprites/spritemap1.png" id="2_jvxap"]
+[ext_resource type="Script" uid="uid://c8svu0bj0umxc" path="res://Scripts/avatar_appearance.gd" id="3_0b04c"]
+[ext_resource type="AnimationLibrary" uid="uid://bac14vkov1ndi" path="res://Animations/animation_library.tres" id="4_0b04c"]
+[ext_resource type="Script" uid="uid://becnes1mtvyhm" path="res://Scripts/animate_movement.gd" id="9_5rt57"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbekk"]
+radius = 34.0
+height = 260.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 3
+script = ExtResource("1_2i876")
+speed = 500.0
+jump_velocity = -1200.0
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(767, 1736, 59, 67)
+
+[node name="Head" type="Sprite2D" parent="Body"]
+z_index = 10
+position = Vector2(-9, -31)
+texture = ExtResource("2_jvxap")
+offset = Vector2(0, -90)
+region_enabled = true
+region_rect = Rect2(185, 937, 186, 196)
+
+[node name="Face" type="Sprite2D" parent="Body/Head"]
+self_modulate = Color(0.92549, 0.764706, 0.560784, 1)
+z_index = -1
+position = Vector2(1, -60)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(422, 1588, 152, 69)
+
+[node name="HatParts" type="Node2D" parent="Body/Head"]
+z_index = 1
+position = Vector2(9, 31)
+
+[node name="HatPart01" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-58, -190)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(249, 1142, 91, 88)
+
+[node name="HatPart02" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-9, -145)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(720, 1699, 192, 28)
+
+[node name="HatPart03" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-9, -145)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1690, 192, 28)
+
+[node name="HatPart04" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-9, -145)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(520, 1682, 192, 28)
+
+[node name="HatPart05" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(1, -184)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1142, 237, 123)
+
+[node name="HatPart06" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-16, -199)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(422, 582, 337, 193)
+
+[node name="HatPart07" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-21, -131)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1273, 139, 168)
+
+[node name="HatPart08" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-37, -215)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(786, 1137, 191, 147)
+
+[node name="HatPart09" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-9, -283)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(765, 723, 247, 195)
+
+[node name="HatPart10" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-11, -198)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(278, 783, 318, 146)
+
+[node name="HatPart11" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-7, -168)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(734, 3, 214, 290)
+
+[node name="HatPart12" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-8, -122)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(766, 500, 222, 216)
+
+[node name="HatPart13" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-9, -254)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(761, 299, 239, 193)
+
+[node name="HatPart14" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-3, -231)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(422, 4, 308, 294)
+
+[node name="HatPart15" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-8, -265)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(280, 587, 93, 141)
+
+[node name="HatPart16" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(84, -239)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(848, 1494, 100, 127)
+
+[node name="HatPart17" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-5, -205)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(52, 37, 318, 262)
+
+[node name="HatPart18" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = -1
+position = Vector2(-36, -235)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(354, 1298, 187, 102)
+
+[node name="HatPart19" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-13, -202)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(350, 1412, 168, 83)
+
+[node name="HatPart20" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = -1
+position = Vector2(-142, -160)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(567, 1185, 149, 161)
+
+[node name="HatPart21" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-6, -217)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(105, 1482, 156, 83)
+
+[node name="HatPart22" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-19, -268)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(604, 926, 173, 250)
+
+[node name="HatPart23" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-18, -265)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 805, 173, 250)
+
+[node name="HatPart24" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-26, -155)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(785, 926, 202, 198)
+
+[node name="HatPart25" type="Sprite2D" parent="Body/Head/HatParts"]
+visible = false
+z_index = 2
+position = Vector2(-17, -265)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 584, 259, 211)
+
+[node name="FaceParts" type="Node2D" parent="Body/Head"]
+position = Vector2(9, 31)
+
+[node name="FacePart01" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-13, -86)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(240, 1573, 174, 65)
+
+[node name="FacePart02" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-12, -85.8)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1062, 174, 65)
+
+[node name="FacePart03" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-5, -85.1)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(269, 1503, 195, 62)
+
+[node name="FacePart04" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(25, -61.7)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(957, 1837, 48, 48)
+
+[node name="FacePart05" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-2.3, -55)
+rotation = -0.0925025
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(584, 1626, 211, 48)
+
+[node name="FacePart06" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-11.3, -80)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(546, 1425, 177, 61)
+
+[node name="FacePart07" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-8.7, -113)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(725, 1293, 180, 106)
+
+[node name="FacePart08" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(15.7, -81.7)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(406, 1726, 96, 47)
+
+[node name="FacePart09" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(25.2, -33)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(107, 1575, 125, 87)
+
+[node name="FacePart10" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-25.2, -44.3)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(154, 1382, 188, 92)
+
+[node name="FacePart11" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-0.8, -86)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(240, 1645, 155, 49)
+
+[node name="FacePart12" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-10.4, -91.2)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(743, 1407, 211, 75)
+
+[node name="FacePart13" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-6.1, -90.4)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(151, 1273, 194, 101)
+
+[node name="FacePart14" type="Sprite2D" parent="Body/Head/FaceParts"]
+visible = false
+z_index = 2
+position = Vector2(-12.2, -62.6)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(379, 1133, 180, 161)
+
+[node name="RArm" type="Sprite2D" parent="Body"]
+z_index = 5
+position = Vector2(-16.3, -18.3)
+texture = ExtResource("2_jvxap")
+offset = Vector2(-7, 22)
+region_enabled = true
+region_rect = Rect2(264, 1756, 35, 63)
+
+[node name="HandParts" type="Node2D" parent="Body/RArm"]
+position = Vector2(16.3, 18.3)
+
+[node name="HandPart01" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(8, 19)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(326, 1727, 72, 63)
+
+[node name="HandPart02" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(17, 23)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1733, 152, 18)
+
+[node name="HandPart03" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-22, 29)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(604, 889, 87, 29)
+
+[node name="HandPart04" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-6, 28)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(749, 1866, 45, 24)
+
+[node name="HandPart05" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(543, 1856, 65, 31)
+
+[node name="HandPart06" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(11, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(510, 1757, 77, 45)
+
+[node name="HandPart07" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(7, 23)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(278, 740, 123, 35)
+
+[node name="HandPart08" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(0, 21)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(164, 1756, 93, 40)
+
+[node name="HandPart09" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(5, 28)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(595, 1757, 73, 46)
+
+[node name="HandPart10" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-1, 26)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(900, 1837, 49, 48)
+
+[node name="HandPart11" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-28, 22)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(201, 1834, 75, 36)
+
+[node name="HandPart12" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(7, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(520, 1721, 158, 28)
+
+[node name="HandPart13" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-16, 21)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(249, 1238, 93, 21)
+
+[node name="HandPart14" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-12, 23)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(582, 1598, 102, 11)
+
+[node name="HandPart15" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-4, 33)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(547, 1354, 149, 43)
+
+[node name="HandPart16" type="Sprite2D" parent="Body/RArm/HandParts"]
+visible = false
+z_index = -1
+position = Vector2(-12, 17)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(205, 1705, 112, 43)
+
+[node name="RLeg" type="Sprite2D" parent="Body"]
+z_index = 3
+position = Vector2(-9, 26.7)
+texture = ExtResource("2_jvxap")
+offset = Vector2(4, 8)
+region_enabled = true
+region_rect = Rect2(970, 1789, 34, 35)
+
+[node name="LArm" type="Sprite2D" parent="Body"]
+z_index = -1
+position = Vector2(16.7, -20.5)
+rotation = -0.499164
+texture = ExtResource("2_jvxap")
+offset = Vector2(-7, 22)
+region_enabled = true
+region_rect = Rect2(264, 1756, 35, 63)
+
+[node name="LLeg" type="Sprite2D" parent="Body"]
+z_index = -1
+position = Vector2(8.7, 26.7)
+texture = ExtResource("2_jvxap")
+offset = Vector2(4, 8)
+region_enabled = true
+region_rect = Rect2(970, 1789, 34, 35)
+
+[node name="UpperBody" type="Node2D" parent="Body"]
+
+[node name="UpperBody01" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -10.4)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(72, 1821, 57, 47)
+
+[node name="UpperBody02" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-0.9, -8.7)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(738, 1812, 57, 46)
+
+[node name="UpperBody03" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(963, 1468, 48, 63)
+
+[node name="UpperBody04" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(3.4, 0)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(145, 1804, 48, 57)
+
+[node name="UpperBody05" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(1.7, -8.7)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(378, 1838, 61, 42)
+
+[node name="UpperBody06" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-46.1, -10.5)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(473, 1810, 61, 44)
+
+[node name="UpperBody07" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -10)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1827, 57, 46)
+
+[node name="UpperBody08" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-16.4, -4.5)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(13, 1601, 88, 74)
+
+[node name="UpperBody09" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-11, -13.7)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(929, 1305, 82, 77)
+
+[node name="UpperBody10" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-5.5, -14.5)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(668, 1505, 71, 62)
+
+[node name="UpperBody11" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -9.1)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(835, 1811, 57, 46)
+
+[node name="UpperBody12" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(198, 820, 72, 74)
+
+[node name="UpperBody13" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-1.8, -13.6)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1767, 60, 51)
+
+[node name="UpperBody14" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -10.9)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(956, 204, 64, 48)
+
+[node name="UpperBody15" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(-0.9, -9.1)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(76, 1766, 59, 47)
+
+[node name="UpperBody16" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -10.9)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(407, 1781, 58, 48)
+
+[node name="UpperBody17" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -10.9)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(962, 1622, 58, 48)
+
+[node name="UpperBody18" type="Sprite2D" parent="Body/UpperBody"]
+visible = false
+z_index = 1
+position = Vector2(0, -9.1)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(902, 1782, 60, 47)
+
+[node name="LowerBody" type="Node2D" parent="Body"]
+position = Vector2(0, -2)
+
+[node name="LowerBody01" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 20.9)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(555, 1817, 55, 25)
+
+[node name="LowerBody02" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(284, 1854, 60, 33)
+
+[node name="LowerBody03" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(803, 1865, 58, 31)
+
+[node name="LowerBody04" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(447, 1862, 58, 31)
+
+[node name="LowerBody05" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(617, 1862, 58, 31)
+
+[node name="LowerBody06" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(683, 1866, 58, 31)
+
+[node name="LowerBody07" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 26)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(135, 1876, 58, 31)
+
+[node name="LowerBody08" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(69, 1876, 58, 31)
+
+[node name="LowerBody09" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(354, 1888, 58, 31)
+
+[node name="LowerBody10" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(-1, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(201, 1877, 58, 31)
+
+[node name="LowerBody11" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 23)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(956, 260, 56, 27)
+
+[node name="LowerBody12" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 21)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1881, 55, 24)
+
+[node name="LowerBody13" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(1, 21)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(267, 1897, 55, 24)
+
+[node name="LowerBody14" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 20)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(576, 1901, 55, 24)
+
+[node name="LowerBody15" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(-50, 25)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(870, 1893, 64, 21)
+
+[node name="LowerBody16" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 18)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(639, 1906, 57, 21)
+
+[node name="LowerBody17" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 14)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(700, 889, 56, 25)
+
+[node name="LowerBody18" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 15)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(4, 1914, 56, 16)
+
+[node name="LowerBody19" type="Sprite2D" parent="Body/LowerBody"]
+visible = false
+z_index = 2
+position = Vector2(0, 15)
+texture = ExtResource("2_jvxap")
+region_enabled = true
+region_rect = Rect2(68, 1915, 56, 16)
+
+[node name="AvatarAppearance" type="Node2D" parent="."]
+script = ExtResource("3_0b04c")
+color = Color(0.866667, 0.866667, 0.823529, 1)
+skin = Color(0.65098, 0.521569, 0.266667, 1)
+
+[node name="AnimateMovement" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("4_0b04c")
+}
+script = ExtResource("9_5rt57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -76)
+shape = SubResource("CapsuleShape2D_xbekk")
+debug_color = Color(4.90934e-06, 0.599783, 0.701251, 0.42)
