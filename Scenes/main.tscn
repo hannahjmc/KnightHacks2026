@@ -8,17 +8,35 @@
 [ext_resource type="Script" uid="uid://b0qheufds5khj" path="res://Scripts/cloud_spawner.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://37s8pb7eq05c" path="res://Scripts/score.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://dbuyo8cf5dc8f" path="res://Scripts/GameOver.gd" id="7_6bp64"]
+[ext_resource type="StyleBox" uid="uid://bxpka6qmw622v" path="res://Themes/green_rectangle.tres" id="7_6iyac"]
+[ext_resource type="FontFile" uid="uid://dwy2m7qtbe8bk" path="res://Fonts/MADE Tommy Soft Regular PERSONAL USE.otf" id="7_ynf5e"]
+[ext_resource type="FontFile" uid="uid://dptppiy285gbn" path="res://Fonts/MADE Tommy Soft ExtraBold PERSONAL USE.otf" id="10_d1ilt"]
+[ext_resource type="FontFile" uid="uid://62ejyl8ffok7" path="res://Fonts/MADE Tommy Soft Medium PERSONAL USE.otf" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://ce5l00hhda6t1" path="res://icon.svg" id="13_fdnlq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(23, 797)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hptm8"]
+bg_color = Color(0.8666667, 1, 0.84705883, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.015686275, 0.21960784, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Main" type="Node2D" unique_id=1813136685]
 
 [node name="FloorCollider" type="StaticBody2D" parent="." unique_id=597048664]
-position = Vector2(0, 325)
+position = Vector2(0, 261)
 scale = Vector2(6.68, 1.01695)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollider" unique_id=618362594]
 position = Vector2(-0.449102, 75)
@@ -31,10 +49,10 @@ scale = Vector2(0.0538921, 0.240001)
 texture = ExtResource("1_8gbba")
 
 [node name="Player" parent="." unique_id=1099365276 node_paths=PackedStringArray("camera", "game_over_canvas") instance=ExtResource("1_jjgbg")]
-position = Vector2(1, 358)
+position = Vector2(1, 294)
 speed = 300.0
 camera = NodePath("../Camera2D")
-game_over_canvas = NodePath("../GameOverCanvas")
+game_over_canvas = NodePath("../GameOver/GameOverCanvas")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=504747911 node_paths=PackedStringArray("player")]
 script = ExtResource("3_kry3j")
@@ -74,69 +92,176 @@ move_speed = 15.0
 
 [node name="Control" type="Control" parent="ScoreCanvas" unique_id=1027606480]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 40.0
+grow_horizontal = 2
 
-[node name="Score" type="Label" parent="ScoreCanvas/Control" unique_id=626080195]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "hellooooo"
+[node name="Panel" type="Panel" parent="ScoreCanvas/Control" unique_id=1844951873]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_top = 10.0
+offset_right = 121.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("7_6iyac")
+
+[node name="Score" type="Label" parent="ScoreCanvas/Control/Panel" unique_id=626080195]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -25.0
+offset_right = 61.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 25)
+theme_override_colors/font_color = Color(0.01604467, 0.2186791, 6.545782e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ynf5e")
+theme_override_font_sizes/font_size = 40
+text = "Score:"
 script = ExtResource("6_21xkr")
 
-[node name="GameOver" type="Node2D" parent="." unique_id=476651057]
-script = ExtResource("7_6bp64")
+[node name="BottomPanel" type="Panel" parent="ScoreCanvas" unique_id=1053061567]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -45.0
+offset_right = 329.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("7_6iyac")
 
-[node name="GameOverCanvas" type="CanvasLayer" parent="." unique_id=812739836]
+[node name="Credits" type="Label" parent="ScoreCanvas/BottomPanel" unique_id=117842226]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -12.0
+offset_right = 128.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 25)
+theme_override_colors/font_color = Color(0.01604467, 0.2186791, 6.545782e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ynf5e")
+theme_override_font_sizes/font_size = 20
+text = "made for KnightHacks 2026"
+
+[node name="GameOver" type="Node2D" parent="." unique_id=476651057 node_paths=PackedStringArray("game_over_canvas", "score", "reset_button")]
+visible = false
+script = ExtResource("7_6bp64")
+game_over_canvas = NodePath("GameOverCanvas")
+score = NodePath("../ScoreCanvas/Control/Panel/Score")
+reset_button = NodePath("GameOverCanvas/Panel/Button")
+
+[node name="GameOverCanvas" type="CanvasLayer" parent="GameOver" unique_id=812739836]
 visible = false
 
-[node name="Control" type="Control" parent="GameOverCanvas" unique_id=2008080998]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Panel" type="Panel" parent="GameOver/GameOverCanvas" unique_id=1626990959]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -97.0
+offset_right = 327.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_6iyac")
 
-[node name="ColorRect" type="ColorRect" parent="GameOverCanvas/Control" unique_id=94578348]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 1, 1, 0)
-
-[node name="GameOver" type="Label" parent="GameOverCanvas/Control" unique_id=261343431]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 157.0
-offset_right = 397.0
-offset_bottom = 199.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+[node name="GameOver" type="Label" parent="GameOver/GameOverCanvas/Panel" unique_id=261343431]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -73.5
+offset_right = 277.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
+theme_override_fonts/font = ExtResource("10_d1ilt")
+theme_override_font_sizes/font_size = 50
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="Score" type="Label" parent="GameOverCanvas/Control" unique_id=1088901671]
+[node name="Score" type="Label" parent="GameOver/GameOverCanvas/Panel" unique_id=1088901671]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.575
-offset_left = 259.0
-offset_top = 570.0
-offset_right = 299.0
-offset_bottom = 589.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Score"
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -18.0
+offset_right = 111.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
+theme_override_fonts/font = ExtResource("7_ynf5e")
+theme_override_font_sizes/font_size = 25
+text = "Score:"
 horizontal_alignment = 1
 script = ExtResource("6_21xkr")
 
-[node name="Button" type="Button" parent="GameOverCanvas" unique_id=1050680168]
-offset_left = 248.0
-offset_top = 320.0
-offset_right = 378.0
-offset_bottom = 370.0
+[node name="Button" type="Button" parent="GameOver/GameOverCanvas/Panel" unique_id=1050680168]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = 15.5
+offset_right = 152.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 19)
+theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
+theme_override_fonts/font = ExtResource("10_hptm8")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_hptm8")
 text = "Play Again?"
 
-[connection signal="pressed" from="GameOverCanvas/Button" to="GameOver" method="_on_button_pressed"]
+[node name="SadLenny" type="TextureRect" parent="GameOver/GameOverCanvas/Panel" unique_id=1283763470]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -64.0
+offset_right = 184.0
+offset_bottom = 64.0
+grow_vertical = 2
+texture = ExtResource("13_fdnlq")
+
+[node name="StartCanvas" type="CanvasLayer" parent="." unique_id=842216841]
+visible = false
+
+[connection signal="pressed" from="GameOver/GameOverCanvas/Panel/Button" to="GameOver" method="_on_button_pressed"]
