@@ -4,18 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://b4jwgsd5elgve" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://cnpfxrsgsseam" path="res://Scenes/cloud.tscn" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://bjsaxswxr43rr" path="res://Scripts/camera.gd" id="3_kry3j"]
+[ext_resource type="Texture2D" uid="uid://cxn8ny5qlafq5" path="res://Sprites/Background_TALL.png" id="4_344ge"]
 [ext_resource type="Script" uid="uid://b0qheufds5khj" path="res://Scripts/cloud_spawner.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://37s8pb7eq05c" path="res://Scripts/score.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://dbuyo8cf5dc8f" path="res://Scripts/GameOver.gd" id="7_6bp64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
-
-[sub_resource type="Gradient" id="Gradient_8gbba"]
-offsets = PackedFloat32Array(0.649351, 1)
-colors = PackedColorArray(0.560784, 0.937255, 1, 1, 0.85098, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jjvhh"]
-gradient = SubResource("Gradient_8gbba")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(23, 797)
@@ -48,9 +42,9 @@ player = NodePath("../Player")
 
 [node name="Background" type="Sprite2D" parent="Camera2D" unique_id=1199971251]
 z_index = -2
-rotation = 1.5708
-scale = Vector2(3.2, 1289.74)
-texture = SubResource("GradientTexture1D_jjvhh")
+position = Vector2(2, -5801)
+scale = Vector2(1.175, 1)
+texture = ExtResource("4_344ge")
 
 [node name="LeftWall" type="StaticBody2D" parent="." unique_id=1991385927]
 position = Vector2(-350, 2)
