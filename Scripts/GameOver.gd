@@ -4,7 +4,7 @@ extends Node
 
 @export var reset_button: Button
 
-
+# show game over screen
 func game_over():
 	game_over_canvas.visible = true
 	

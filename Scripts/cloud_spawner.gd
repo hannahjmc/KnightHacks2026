@@ -1,27 +1,25 @@
 extends Node2D
 
-# Node References
 @export var cloud : RigidBody2D
 @export var player : CharacterBody2D
 @export var camera : Camera2D
 
-# Cloud Placement Variables
-@export var min_spawn_x : float = -250.0 # How far left clouds can spawn
-@export var max_spawn_x : float = 250.0 # How far right clouds can spawn
-@export var vertical_spacing : float = 150.0  # How far clouds are spaced vertically
-@export var clouds_max : int = 5 # The amount of initial clouds spawnedaa
+@export var min_spawn_x : float = -250.0 # spawn left
+@export var max_spawn_x : float = 250.0 # spawn right
+@export var vertical_spacing : float = 150.0  # cloud space
+@export var clouds_max : int = 5 # initial clouds
 
-# This keeps track of the height of the current highest cloud
+# height of highest cloud
 var last_cloud_y : float = 350.0
 
 func _process(_delta: float) -> void:
-	# Platforms that leave camera view will be removed
+	# remove clouds not in view
 	var camera_y = camera.global_position.y 
 	for cloud in get_children():
 		if cloud.position.y > camera_y + 600:  
 			cloud.queue_free()
 
-# Detect if player is near top platform and spawn new platforms
+# create new clouds
 	var player_pos = player.global_position
 	if player_pos.y < (last_cloud_y + 400):
 		for j in range(2):
