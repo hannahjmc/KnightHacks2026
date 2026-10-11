@@ -1,7 +1,7 @@
 extends Node2D
 
 # Node References
-@export var coin : RigidBody2D
+@export var coin_scene : PackedScene
 @export var player : CharacterBody2D
 @export var camera : Camera2D
 
@@ -35,7 +35,7 @@ func spawn_coin():
 	var random_x_position: float = randf_range(min_spawn_x, max_spawn_x)
 	var new_y_position : float = last_coin_y - vertical_spacing
 	
-	var new_coin = coin.duplicate()
+	var new_coin = coin_scene.instantiate()
 	new_coin.transform = Transform2D(0.0 ,Vector2(random_x_position, new_y_position))
 	last_coin_y = new_y_position
 	add_child(new_coin)
