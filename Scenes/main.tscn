@@ -13,7 +13,7 @@
 [ext_resource type="StyleBox" uid="uid://bxpka6qmw622v" path="res://Themes/green_rectangle.tres" id="7_6iyac"]
 [ext_resource type="Script" uid="uid://c2q51kdjhahuk" path="res://Scripts/start_canvas.gd" id="7_h1bgf"]
 [ext_resource type="Script" uid="uid://cq01117nhcsfo" path="res://Scripts/score_canvas.gd" id="7_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://d4dmd20xgkd84" path="res://Sprites/logo.png" id="7_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://d0fgfoiq4lvon" path="res://Sprites/logo.png" id="7_wsu2k"]
 [ext_resource type="FontFile" uid="uid://dwy2m7qtbe8bk" path="res://Fonts/MADE Tommy Soft Regular PERSONAL USE.otf" id="7_ynf5e"]
 [ext_resource type="StyleBox" uid="uid://cxyir3kuo8rkw" path="res://Themes/green_button.tres" id="9_k12tt"]
 [ext_resource type="FontFile" uid="uid://dptppiy285gbn" path="res://Fonts/MADE Tommy Soft ExtraBold PERSONAL USE.otf" id="10_d1ilt"]
@@ -92,9 +92,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -250.0
+offset_top = -266.0
 offset_right = 250.0
-offset_bottom = 250.0
+offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_wsu2k")
@@ -106,9 +106,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -76.0
-offset_top = 179.0
+offset_top = 163.0
 offset_right = 76.0
-offset_bottom = 219.0
+offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("9_k12tt")
@@ -120,9 +120,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -85.25
-offset_top = 175.0
+offset_top = 159.0
 offset_right = 85.25
-offset_bottom = 224.0
+offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
