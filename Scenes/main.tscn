@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bo1gqnlnu7mkg"]
 
 [ext_resource type="Texture2D" uid="uid://bnmatkf00wyka" path="res://Sprites/grass.png" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://n2oip4e12270" path="res://Scripts/coin_spawner.gd" id="1_fevyy"]
 [ext_resource type="PackedScene" uid="uid://b4jwgsd5elgve" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://duytcc3too7d2" path="res://Scenes/coin.tscn" id="2_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cnpfxrsgsseam" path="res://Scenes/cloud.tscn" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://bjsaxswxr43rr" path="res://Scripts/camera.gd" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://cxn8ny5qlafq5" path="res://Sprites/Background_TALL.png" id="4_344ge"]
@@ -293,6 +295,14 @@ offset_right = 184.0
 offset_bottom = 64.0
 grow_vertical = 2
 texture = ExtResource("13_fdnlq")
+
+[node name="CoinSpawner" type="Node2D" parent="." unique_id=2042330531 node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("1_fevyy")
+coin_scene = ExtResource("2_hibaj")
+player = NodePath("../Player")
+camera = NodePath("../Camera2D")
+
+[node name="Coin" parent="." unique_id=252415301 instance=ExtResource("2_hibaj")]
 
 [connection signal="pressed" from="StartCanvas/StartButton" to="StartCanvas" method="_on_start_button_pressed"]
 [connection signal="pressed" from="GameOver/GameOverCanvas/Panel/Button" to="GameOver" method="_on_button_pressed"]
