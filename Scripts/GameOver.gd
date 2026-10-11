@@ -4,7 +4,6 @@ extends Node
 @export var score: Label
 @export var reset_button: Button
 
-# couldnt get these panels to dissappear
 @onready var panel: Panel = $"../ScoreCanvas/Panel"
 @onready var scoreLabel: Label = $"../ScoreCanvas/Panel/Score"
 @onready var bottom_panel: Panel = $"../ScoreCanvas/BottomPanel"

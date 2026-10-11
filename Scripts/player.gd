@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export var xBounds: float = 310.0
 
 @onready var lenny = $AnimatedSprite2D
+@onready var game_over_player: AudioStreamPlayer = $GameOverPlayer
+@onready var jump_player: AudioStreamPlayer = $JumpPlayer
 
 var height_score : float = 0.0
 
@@ -20,9 +22,11 @@ func _process(_delta: float) -> void:
 		
 	# player falls
 	if position.y > camera.position.y + 548:
+		#game_over_player.play() # not working
 		game_over_canvas.visible = true
 		velocity.y = 0.0
 		gravity_force = Vector2(0, 0)
+
 
 # runs every physics frame
 func _physics_process(delta: float) -> void:
@@ -33,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	# jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
+		jump_player.play()
 	
 	# movement
 	var direction = Input.get_axis("ui_left", "ui_right")
