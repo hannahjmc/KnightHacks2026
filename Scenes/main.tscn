@@ -201,7 +201,6 @@ theme_override_font_sizes/font_size = 20
 text = "made for KnightHacks 2026"
 
 [node name="GameOver" type="Node2D" parent="." unique_id=476651057 node_paths=PackedStringArray("game_over_canvas", "score", "reset_button")]
-visible = false
 script = ExtResource("7_6bp64")
 game_over_canvas = NodePath("GameOverCanvas")
 score = NodePath("../ScoreCanvas/Panel/Score")
@@ -251,9 +250,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 23.0
-offset_top = -18.0
+offset_top = -9.0
 offset_right = 111.0
-offset_bottom = 24.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.015686275, 0.21960784, 0, 1)
