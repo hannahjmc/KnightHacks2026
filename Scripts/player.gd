@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var game_over_canvas: CanvasLayer
 @export var xBounds: float = 310.0
 
+@onready var lenny = $AnimatedSprite2D
+
 var height_score : float = 0.0
 
 func _process(_delta: float) -> void:
@@ -22,22 +24,35 @@ func _process(_delta: float) -> void:
 		velocity.y = 0.0
 		gravity_force = Vector2(0, 0)
 
-#runs every physics frame
+# runs every physics frame
 func _physics_process(delta: float) -> void:
-	# puts gravity in the air
+	# gravity
 	if not is_on_floor():
 		velocity += gravity_force * delta
 		
-	# space bar
+	# jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
 	
-	# move left and right
+	# movement
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * speed
+		lenny.flip_h = direction > 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		
-	# moves characterbody
+	
 	move_and_slide()
+	
+	# animation
+	if not is_on_floor():
+		if velocity.y < 0:
+			lenny.play("Jump")
+		else:
+			lenny.play("Fall")
+	else:
+		if velocity.x != 0:
+			lenny.play("Walk")
+		else:
+			lenny.play("Idle")
