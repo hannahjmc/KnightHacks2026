@@ -19,6 +19,8 @@
 [ext_resource type="FontFile" uid="uid://dptppiy285gbn" path="res://Fonts/MADE Tommy Soft ExtraBold PERSONAL USE.otf" id="10_d1ilt"]
 [ext_resource type="FontFile" uid="uid://62ejyl8ffok7" path="res://Fonts/MADE Tommy Soft Medium PERSONAL USE.otf" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://blhwjwcw3acbk" path="res://Sprites/lenny_dead.png" id="17_fevyy"]
+[ext_resource type="AudioStream" uid="uid://dvyyu33x51knx" path="res://Sounds/blackberry-startup-sound.mp3" id="20_hibaj"]
+[ext_resource type="AudioStream" uid="uid://bxba87kxn4xyl" path="res://Sounds/hitslab-irish-celtic-medieval-music-486074.mp3" id="22_ee4r6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 
@@ -303,6 +305,16 @@ player = NodePath("../Player")
 camera = NodePath("../Camera2D")
 
 [node name="Coin" parent="." unique_id=252415301 instance=ExtResource("2_hibaj")]
+
+[node name="StartupSound" type="AudioStreamPlayer" parent="." unique_id=1591456899]
+stream = ExtResource("20_hibaj")
+autoplay = true
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=216020219]
+stream = ExtResource("22_ee4r6")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="StartCanvas/StartButton" to="StartCanvas" method="_on_start_button_pressed"]
 [connection signal="pressed" from="GameOver/GameOverCanvas/Panel/Button" to="GameOver" method="_on_button_pressed"]

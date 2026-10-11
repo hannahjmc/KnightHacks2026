@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cf08fpw8njsev" path="res://Scripts/coin.gd" id="1_jgi06"]
 [ext_resource type="Texture2D" uid="uid://d0x361r25m04j" path="res://Sprites/coin.png" id="2_jgi06"]
+[ext_resource type="AudioStream" uid="uid://byrp6hvwug135" path="res://Sounds/subway-surfers-coin-collect.mp3" id="3_g537i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jgi06"]
 
@@ -34,5 +35,8 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1767751733]
 position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_g537i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=704562836]
+stream = ExtResource("3_g537i")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
