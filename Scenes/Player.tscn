@@ -1,10 +1,56 @@
 [gd_scene format=3 uid="uid://b4jwgsd5elgve"]
 
 [ext_resource type="Script" uid="uid://badikd83xv3ns" path="res://Scripts/player.gd" id="1_2i876"]
-[ext_resource type="Texture2D" uid="uid://ce5l00hhda6t1" path="res://icon.svg" id="2_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://bnjnxeayogbgf" path="res://Sprites/lenny_fall.png" id="2_52ee3"]
+[ext_resource type="Texture2D" uid="uid://cvkvxvh2vrxuu" path="res://Sprites/lenny_idle1.png" id="2_nn08x"]
+[ext_resource type="Texture2D" uid="uid://btfthkvif84m0" path="res://Sprites/lenny_idle2.png" id="3_52ee3"]
+[ext_resource type="Texture2D" uid="uid://ptu10aeahiyt" path="res://Sprites/lenny_idle3.png" id="4_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://bvifuqc8cms5h" path="res://Sprites/lenny_jump1.png" id="5_megsn"]
+[ext_resource type="Texture2D" uid="uid://q2g03h0wh4wj" path="res://Sprites/lenny_jump2.png" id="6_yoq75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5ysw"]
-size = Vector2(132, 128)
+size = Vector2(108, 188)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5ysw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_52ee3")
+}],
+"loop": 1,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nn08x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bhhdu")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_megsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yoq75")
+}],
+"loop": 2,
+"name": &"Jump",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_52ee3")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1115726660]
 scale = Vector2(0.5, 0.5)
@@ -13,10 +59,13 @@ script = ExtResource("1_2i876")
 jump_velocity = -1200.0
 speed = 500.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=521042950]
-texture = ExtResource("2_kyqiw")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272309861]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_e5ysw")
 debug_color = Color(4.90934e-06, 0.599783, 0.701251, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1435873451]
+scale = Vector2(0.16, 0.16)
+sprite_frames = SubResource("SpriteFrames_e5ysw")
+animation = &"Idle"
+autoplay = "Idle"
